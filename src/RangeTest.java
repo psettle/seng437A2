@@ -9,4 +9,15 @@ public class RangeTest {
 		fail("Not yet implemented");
 	}
 
+	
+	
+	@Test
+	public void testContainsInCentreOfRange() {
+		Range range = new Range(-3, 7);
+	}
+	
+	
+	
+	
+	
 }
