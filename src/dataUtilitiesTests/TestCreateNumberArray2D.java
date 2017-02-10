@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestGetCumulativePercentages {
+public class TestCreateNumberArray2D {
 
 	private static final int DEFAULT_TIMEOUT = 2000;
 	

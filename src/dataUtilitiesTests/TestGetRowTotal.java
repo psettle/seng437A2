@@ -13,7 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestGetRowTotal {
-
+	
+	private static final int DEFAULT_TIMEOUT = 2000;
 
 	private Mockery mockingContext;
 	private Values2D values;
@@ -85,6 +86,7 @@ public class TestGetRowTotal {
 		
 		assertEquals("Testing row total with no columns", 0, result, 0.0000001d);
 	}
+
 	
 	@Test
 	public void testInvalidColumnNumber() {

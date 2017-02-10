@@ -14,6 +14,8 @@ public class TestGetColumnTotal {
 	private Mockery mockingContext;
 	private Values2D values;
 	
+	private static final int DEFAULT_TIMEOUT = 2000;
+	
 	
 	@Before
 	public void setup() {
@@ -23,8 +25,43 @@ public class TestGetColumnTotal {
 		
 	}
 	
+<<<<<<< HEAD
 	@Test
 	public void testColumnTotalWithInts() {
+=======
+	@Test(expected=Exception.class,timeout=DEFAULT_TIMEOUT)
+	public void testColumnTooLarge() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+			atLeast(0).of(values).getRowCount();
+			will(returnValue(0));
+			atLeast(0).of(values).getColumnCount();
+			will(returnValue(0));
+			}
+		});
+		
+		DataUtilities.calculateColumnTotal(this.values, 3);
+	}
+	
+	@Test(expected=Exception.class,timeout=DEFAULT_TIMEOUT)
+	public void testColumnTooSmall() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+			atLeast(0).of(values).getRowCount();
+			will(returnValue(0));
+			atLeast(0).of(values).getColumnCount();
+			will(returnValue(0));
+			}
+		});
+		
+		DataUtilities.calculateColumnTotal(this.values, -1);
+	}
+	
+	@Test(timeout=DEFAULT_TIMEOUT)
+	public void testSummingWithInts() {
+>>>>>>> 26912cf5dc5241f835fe09239b4bda9f8a287884
 		
 		mockingContext.checking(new Expectations() {
 			{
@@ -46,8 +83,13 @@ public class TestGetColumnTotal {
 		assertEquals("Testing a column total with a column of integers", 70, result, 0.0000001d);
 	}
 	
+<<<<<<< HEAD
 	@Test
 	public void testColumnTotalWithDoubles() {
+=======
+	@Test(timeout=DEFAULT_TIMEOUT)
+	public void testSummingWithDoubles() {
+>>>>>>> 26912cf5dc5241f835fe09239b4bda9f8a287884
 		
 		mockingContext.checking(new Expectations() {
 			{
