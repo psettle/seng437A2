@@ -7,7 +7,9 @@ import org.junit.Test;
 
 public class TestGetLength {
 
-	@Test
+	private static final int DEFAULT_TIMEOUT = 2000;
+	
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testValidLowerLessThanUpper() {
 		
 		Range r = new Range(-3.5, 4.7);
@@ -16,7 +18,7 @@ public class TestGetLength {
 		
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testValidLowerEqualsUpper() {
 		
 		Range r = new Range(3.0, 3.0);
@@ -25,7 +27,7 @@ public class TestGetLength {
 		
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testUpperBoundNotANumber() {
 		
 		Range r = new Range(-2.0, Double.NaN);
@@ -34,7 +36,7 @@ public class TestGetLength {
 		
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testLowerBoundNegativeInfinity() {
 		
 		Range r = new Range(Double.NEGATIVE_INFINITY, 3.0);
@@ -43,7 +45,7 @@ public class TestGetLength {
 		
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testUpperBoundPositiveInfinity() {
 		
 		Range r = new Range(-4.7, Double.POSITIVE_INFINITY);
