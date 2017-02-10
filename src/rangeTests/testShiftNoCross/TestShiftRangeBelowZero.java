@@ -6,7 +6,7 @@ import org.jfree.data.Range;
 import org.junit.Before;
 import org.junit.Test;
 
-public class testRangeBelowZero {
+public class TestShiftRangeBelowZero {
 
 	private Range range;
 	
