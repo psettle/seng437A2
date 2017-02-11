@@ -25,14 +25,13 @@ public class TestGetCumulativePercentages {
 		values = mockingContext.mock(KeyedValues.class);
 	}
 	
-	@Test(expected=Exception.class, timeout=DEFAULT_TIMEOUT)
+	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
 	public void test_Null_KeyedValuesDataInput() {
-		
 		
 		DataUtilities.getCumulativePercentages(null);
 	}
 	
-	@Test(expected=Exception.class, timeout=DEFAULT_TIMEOUT)
+	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
 	public void test_Empty_KeyedValuesDataInput() {
 		
 		mockingContext.checking(new Expectations() {
@@ -235,7 +234,7 @@ public class TestGetCumulativePercentages {
 
 	}
 	
-	@Test(expected=Exception.class, timeout=DEFAULT_TIMEOUT)
+	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
 	public void test_NegativeValue_KeyedValues_exception() {
 		
 		mockingContext.checking(new Expectations() {
@@ -268,7 +267,7 @@ public class TestGetCumulativePercentages {
 
 	}
 	
-	@Test(expected=Exception.class, timeout=DEFAULT_TIMEOUT)
+	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
 	public void test_ZeroValue_KeyedValues_exception() {
 		
 		mockingContext.checking(new Expectations() {
@@ -293,10 +292,11 @@ public class TestGetCumulativePercentages {
 		DataUtilities.getCumulativePercentages(this.values);
 		
 		// delete these comments:
+		
 		// ASSUME: This test should throw an exception, but it doesn't. It tries to compute
 		// the cumulative percentage anyway, which would result in a percentage value outside of 0.0 and 1.0 (NaN)
 		
-		/* THIS ACTUALLY ALL PASSES.
+		/* v v THIS ACTUALLY ALL PASSES v v.
 
 		KeyedValues result = DataUtilities.getCumulativePercentages(this.values);
 		assertEquals("Testing result size with integer KeyedValues",
