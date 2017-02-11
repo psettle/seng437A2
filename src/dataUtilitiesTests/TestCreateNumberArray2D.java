@@ -21,6 +21,20 @@ public class TestCreateNumberArray2D {
 	}
 	
 	@Test (timeout = DEFAULT_TIMEOUT)
+	public void testEmptyArray() {
+		
+		double[][] testArr = {{}};
+		
+		Number[][] expected = {{}};
+		
+		Number[][] actual = DataUtilities.createNumberArray2D(testArr);
+		
+		assertArrayEquals("Testing using an empty array argument", expected, actual);
+		
+	}
+
+	
+	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testValid2DDoubleArrayCreated() {
 		
 		double[][] testArr = {{9.9, 8.88, 7.9}, {5.5, 4.4, 8.0}, {3.3, 23.4, 33.5}};

@@ -39,24 +39,6 @@ public class TestGetLowerBound {
 	}
 	
 	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testUpperBoundNAN() {
-		
-		Range range = new Range(0, Double.NaN);
-		
-		assertEquals("Testing getLowerBound with Upper == NaN", 0, range.getLowerBound(), 0);
-		
-	}
-	
-	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testLowerBoundNAN() {
-		
-		Range range = new Range(Double.NaN, 55);
-		
-		assertEquals("Testing getLowerBound with Lower == NaN", Double.NaN, range.getLowerBound(), 0);
-		
-	}
-	
-	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testLowerEqualsUpper() {
 		
 		Range range = new Range(0, 0);
@@ -64,6 +46,7 @@ public class TestGetLowerBound {
 		assertEquals("Testing getLowerBound with Lower == Upper", 0, range.getLowerBound(), 0);
 		
 	}
+
 	
 	
 }
