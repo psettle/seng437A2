@@ -26,7 +26,7 @@ public class TestGetColumnTotal {
 	}
 
 	
-	@Test(expected=Exception.class, timeout=DEFAULT_TIMEOUT)
+	@Test(expected=IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
 	public void testColumnTooLarge() {
 		
 		mockingContext.checking(new Expectations() {
@@ -41,7 +41,7 @@ public class TestGetColumnTotal {
 		DataUtilities.calculateColumnTotal(this.values, 3);
 	}
 	
-	@Test(expected = Exception.class, timeout=DEFAULT_TIMEOUT)
+	@Test(expected = IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
 	public void testColumnTooSmall() {
 		
 		mockingContext.checking(new Expectations() {
@@ -101,7 +101,7 @@ public class TestGetColumnTotal {
 		assertEquals("Testing a column total with a column of doubles", 13.2, result, 0.0000001d);
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testColumnTotalWithNoRows() {
 		
 		mockingContext.checking(new Expectations() {
@@ -116,7 +116,7 @@ public class TestGetColumnTotal {
 		assertEquals("Testing a column total without any rows.", 0, result, 0);
 	}
 	
-	@Test (expected = InvalidParameterException.class)
+	@Test (timeout=DEFAULT_TIMEOUT, expected = InvalidParameterException.class)
 	public void testColumnTotalWithNullArgument() {
 		
 		DataUtilities.calculateColumnTotal(null, 0);

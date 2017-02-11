@@ -3,7 +3,6 @@ package dataUtilitiesTests;
 import static org.junit.Assert.*;
 
 import java.security.InvalidParameterException;
-import java.util.Arrays;
 
 import org.jfree.data.DataUtilities;
 import org.jfree.data.Values2D;
@@ -26,6 +25,36 @@ public class TestGetRowTotal {
 		mockingContext = new Mockery();
 		values = mockingContext.mock(Values2D.class);
 		
+	}
+	
+	@Test(expected=IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
+	public void testRowTooLarge() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(0).of(values).getRowCount();
+				will(returnValue(0));
+				atLeast(0).of(values).getColumnCount();
+				will(returnValue(0));
+			}
+		});
+		
+		DataUtilities.calculateColumnTotal(this.values, 3);
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
+	public void testRowTooSmall() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(0).of(values).getRowCount();
+				will(returnValue(0));
+				atLeast(0).of(values).getColumnCount();
+				will(returnValue(0));
+			}
+		});
+		
+		DataUtilities.calculateColumnTotal(this.values, -1);
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
