@@ -28,7 +28,7 @@ public class TestGetRowTotal {
 		
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithInts() {
 		
 		mockingContext.checking(new Expectations() {
@@ -51,7 +51,7 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with a row on integers", 16, result, 0.0000001d);
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithDoubles() {
 		
 		mockingContext.checking(new Expectations() {
@@ -72,7 +72,7 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with row of doubles", 12.583, result, 0.0000001d);
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithNoColumns() {
 		
 		mockingContext.checking(new Expectations() {
@@ -87,7 +87,7 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with no columns", 0, result, 0.0000001d);
 	}
 	
-	@Test (expected = InvalidParameterException.class)
+	@Test (expected = InvalidParameterException.class,timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithNullArgument() {
 		
 		DataUtilities.calculateRowTotal(null, 0);
