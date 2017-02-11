@@ -3,7 +3,7 @@ package dataUtilitiesTests;
 import static org.junit.Assert.*;
 
 import java.security.InvalidParameterException;
-
+import java.util.Arrays;
 
 import org.jfree.data.DataUtilities;
 import org.jfree.data.Values2D;
@@ -86,44 +86,15 @@ public class TestGetRowTotal {
 		
 		assertEquals("Testing row total with no columns", 0, result, 0.0000001d);
 	}
+	
+	@Test (expected = InvalidParameterException.class)
+	public void testRowTotalWithNullArgument() {
+		
+		DataUtilities.calculateRowTotal(null, 0);
+		
+	}
+	
 
-	
-	@Test
-	public void testInvalidColumnNumber() {
-		
-		mockingContext.checking(new Expectations() {
-			{
-				one(values).getColumnCount();
-				will(returnValue(3));
-				one(values).getValue(1, 0);
-				will(returnValue(3.695));
-				one(values).getValue(1, 1);
-				will(returnValue(0));
-				one(values).getValue(1, 2);
-				will(returnValue(8.888));
-			}
-		});
-		
-		double result = DataUtilities.calculateRowTotal(values, 1);
-		
-		assertEquals("Testing row total with row of doubles", 12.583, result, 0.0000001d);
-	}
-	
-	@Test
-	public void testNegativeColumnIndex() {
-		
-		mockingContext.checking(new Expectations() {
-			{
-				one(values).getColumnCount();
-				will(returnValue(3));
-				one(values).getValue(0, -1);
-				will(throwException(new IndexOutOfBoundsException()));
-			}
-		});
-		
-		double result = DataUtilities.calculateRowTotal(values, -1);
-		
-	}
 	
 	
 

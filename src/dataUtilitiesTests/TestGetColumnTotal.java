@@ -24,12 +24,9 @@ public class TestGetColumnTotal {
 		values = mockingContext.mock(Values2D.class);
 		
 	}
+
 	
-<<<<<<< HEAD
-	@Test
-	public void testColumnTotalWithInts() {
-=======
-	@Test(expected=Exception.class,timeout=DEFAULT_TIMEOUT)
+	@Test(expected=Exception.class, timeout=DEFAULT_TIMEOUT)
 	public void testColumnTooLarge() {
 		
 		mockingContext.checking(new Expectations() {
@@ -44,7 +41,7 @@ public class TestGetColumnTotal {
 		DataUtilities.calculateColumnTotal(this.values, 3);
 	}
 	
-	@Test(expected=Exception.class,timeout=DEFAULT_TIMEOUT)
+	@Test(expected = Exception.class, timeout=DEFAULT_TIMEOUT)
 	public void testColumnTooSmall() {
 		
 		mockingContext.checking(new Expectations() {
@@ -59,9 +56,8 @@ public class TestGetColumnTotal {
 		DataUtilities.calculateColumnTotal(this.values, -1);
 	}
 	
-	@Test(timeout=DEFAULT_TIMEOUT)
-	public void testSummingWithInts() {
->>>>>>> 26912cf5dc5241f835fe09239b4bda9f8a287884
+	@Test(timeout = DEFAULT_TIMEOUT)
+	public void testTotalWithInts() {
 		
 		mockingContext.checking(new Expectations() {
 			{
@@ -82,14 +78,10 @@ public class TestGetColumnTotal {
 		
 		assertEquals("Testing a column total with a column of integers", 70, result, 0.0000001d);
 	}
+
 	
-<<<<<<< HEAD
-	@Test
+	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testColumnTotalWithDoubles() {
-=======
-	@Test(timeout=DEFAULT_TIMEOUT)
-	public void testSummingWithDoubles() {
->>>>>>> 26912cf5dc5241f835fe09239b4bda9f8a287884
 		
 		mockingContext.checking(new Expectations() {
 			{
@@ -114,7 +106,7 @@ public class TestGetColumnTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			one(values).getRowCount();
+			(values).getRowCount();
 			will(returnValue(0));
 			}
 		});
@@ -124,46 +116,14 @@ public class TestGetColumnTotal {
 		assertEquals("Testing a column total without any rows.", 0, result, 0);
 	}
 	
-
-	@Test (expected = IndexOutOfBoundsException.class)
-	public void testNegativeRowIndex() {
+	@Test (expected = InvalidParameterException.class)
+	public void testColumnTotalWithNullArgument() {
 		
-		mockingContext.checking(new Expectations() {
-			{
-				one(values).getRowCount();
-				will(returnValue(3));
-				one(values).getValue(0, -1);
-				will(throwException(new IndexOutOfBoundsException()));
-				one(values).getValue(1, -1);
-				will(throwException(new IndexOutOfBoundsException()));
-				one(values).getValue(2, -1);
-				will(throwException(new IndexOutOfBoundsException()));
-			}
-		});
-		
-		double result = DataUtilities.calculateColumnTotal(values, -1);
+		DataUtilities.calculateColumnTotal(null, 0);
 		
 	}
 	
-	@Test (expected = IndexOutOfBoundsException.class)
-	public void testIndexOutOfBounds() {
-		
-		mockingContext.checking(new Expectations() {
-			{
-				one(values).getRowCount();
-				will(returnValue(3));
-				one(values).getValue(0, 5);
-				will(throwException(new IndexOutOfBoundsException()));
-				one(values).getValue(1, 5);
-				will(throwException(new IndexOutOfBoundsException()));
-				one(values).getValue(2, 5);
-				will(throwException(new IndexOutOfBoundsException()));
-			}
-		});
-		
-		double result = DataUtilities.calculateColumnTotal(values, 5);
-		
-	}
+	
 	
 	
 	
