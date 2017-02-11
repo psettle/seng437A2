@@ -19,26 +19,26 @@ public class TestShiftRangeSpansZero {
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testPositivehiftStaysBelowZero() {
-		assertEquals(new Range(-1, 3), Range.shift(this.range, 1));
+		assertEquals("Test small posivite shift of spanning range", new Range(-1, 3), Range.shift(this.range, 1));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testNegativeShiftStaysAboveZero() {
-		assertEquals(new Range(-4, 0), Range.shift(this.range, -2));
+		assertEquals("Test small negative shift of spanning range", new Range(-4, 0), Range.shift(this.range, -2));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testPositiveShiftBlocksAtZero() {
-		assertEquals(new Range(0, 4), Range.shift(this.range, 3));
+		assertEquals("Test small posivite shift of spanning range", new Range(0, 4), Range.shift(this.range, 3));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT) 
 	public void testNegativeShiftBlocksAtZero() {
-		assertEquals(new Range(-4, 0), Range.shift(this.range, -3));
+		assertEquals("Test blocking negative shift of spanning range", new Range(-4, 0), Range.shift(this.range, -3));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testNoShift() {
-		assertEquals(new Range(-2, 2), Range.shift(this.range, 0));
+		assertEquals("Testing no shift of spanning range", new Range(-2, 2), Range.shift(this.range, 0));
 	}
 }

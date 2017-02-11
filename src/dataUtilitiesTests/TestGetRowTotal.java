@@ -3,7 +3,6 @@ package dataUtilitiesTests;
 import static org.junit.Assert.*;
 
 import java.security.InvalidParameterException;
-import java.util.Arrays;
 
 import org.jfree.data.DataUtilities;
 import org.jfree.data.Values2D;
@@ -28,7 +27,37 @@ public class TestGetRowTotal {
 		
 	}
 	
-	@Test
+	@Test(expected=IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
+	public void testRowTooLarge() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(0).of(values).getRowCount();
+				will(returnValue(0));
+				atLeast(0).of(values).getColumnCount();
+				will(returnValue(0));
+			}
+		});
+		
+		DataUtilities.calculateColumnTotal(this.values, 3);
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
+	public void testRowTooSmall() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				atLeast(0).of(values).getRowCount();
+				will(returnValue(0));
+				atLeast(0).of(values).getColumnCount();
+				will(returnValue(0));
+			}
+		});
+		
+		DataUtilities.calculateColumnTotal(this.values, -1);
+	}
+	
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithInts() {
 		
 		mockingContext.checking(new Expectations() {
@@ -51,7 +80,7 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with a row on integers", 16, result, 0.0000001d);
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithDoubles() {
 		
 		mockingContext.checking(new Expectations() {
@@ -72,7 +101,7 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with row of doubles", 12.583, result, 0.0000001d);
 	}
 	
-	@Test
+	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithNoColumns() {
 		
 		mockingContext.checking(new Expectations() {
@@ -87,7 +116,7 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with no columns", 0, result, 0.0000001d);
 	}
 	
-	@Test (expected = InvalidParameterException.class)
+	@Test (expected = InvalidParameterException.class,timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithNullArgument() {
 		
 		DataUtilities.calculateRowTotal(null, 0);

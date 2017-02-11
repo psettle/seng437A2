@@ -19,21 +19,21 @@ public class TestShiftRangePastZero {
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testPositivehift() {
-		assertEquals(new Range(5, 8), Range.shift(this.range, 1));
+		assertEquals("Testing positive shift of positive range", new Range(5, 8), Range.shift(this.range, 1));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testNegativeShiftStaysAboveZero() {
-		assertEquals(new Range(3, 6), Range.shift(this.range, -1));
+		assertEquals("Testing negative shift of a positive range", new Range(3, 6), Range.shift(this.range, -1));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testNegativeShiftToZero() {
-		assertEquals(new Range(0, 3), Range.shift(this.range, -4));
+		assertEquals("Testing shift to zero of a positive range", new Range(0, 3), Range.shift(this.range, -4));
 	}
 	
 	@Test(timeout=DEFAULT_TIMEOUT) 
 	public void testNegativeShiftBlocksAtZero() {
-		assertEquals(new Range(0, 3), Range.shift(this.range, -5));
+		assertEquals("Testing shift past zero of a positive range", new Range(0, 3), Range.shift(this.range, -5));
 	}
 }
