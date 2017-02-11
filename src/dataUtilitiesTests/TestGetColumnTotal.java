@@ -31,10 +31,10 @@ public class TestGetColumnTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getRowCount();
-			will(returnValue(0));
-			atLeast(0).of(values).getColumnCount();
-			will(returnValue(0));
+				atLeast(0).of(values).getRowCount();
+				will(returnValue(0));
+				atLeast(0).of(values).getColumnCount();
+				will(returnValue(0));
 			}
 		});
 		
@@ -46,10 +46,10 @@ public class TestGetColumnTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getRowCount();
-			will(returnValue(0));
-			atLeast(0).of(values).getColumnCount();
-			will(returnValue(0));
+				atLeast(0).of(values).getRowCount();
+				will(returnValue(0));
+				atLeast(0).of(values).getColumnCount();
+				will(returnValue(0));
 			}
 		});
 		
@@ -61,16 +61,16 @@ public class TestGetColumnTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			one(values).getRowCount();
-			will(returnValue(4));
-			one(values).getValue(0, 1);
-			will(returnValue(3));
-			one(values).getValue(1, 1);
-			will(returnValue(4));
-			one(values).getValue(2, 1);
-			will(returnValue(0));
-			one(values).getValue(3, 1);
-			will(returnValue(63));
+				one(values).getRowCount();
+				will(returnValue(4));
+				one(values).getValue(0, 1);
+				will(returnValue(3));
+				one(values).getValue(1, 1);
+				will(returnValue(4));
+				one(values).getValue(2, 1);
+				will(returnValue(0));
+				one(values).getValue(3, 1);
+				will(returnValue(63));
 			}
 		});
 		
@@ -85,14 +85,14 @@ public class TestGetColumnTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			one(values).getRowCount();
-			will(returnValue(3));
-			one(values).getValue(0, 1);
-			will(returnValue(3.3));
-			one(values).getValue(1, 1);
-			will(returnValue(4.4));
-			one(values).getValue(2, 1);
-			will(returnValue(5.5));
+				one(values).getRowCount();
+				will(returnValue(3));
+				one(values).getValue(0, 1);
+				will(returnValue(3.3));
+				one(values).getValue(1, 1);
+				will(returnValue(4.4));
+				one(values).getValue(2, 1);
+				will(returnValue(5.5));
 			}
 		});
 		
@@ -106,7 +106,7 @@ public class TestGetColumnTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			(values).getRowCount();
+			one(values).getRowCount();
 			will(returnValue(0));
 			}
 		});

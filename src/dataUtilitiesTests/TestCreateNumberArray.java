@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import java.security.InvalidParameterException;
 
-import javax.xml.crypto.Data;
-
 import org.jfree.data.DataUtilities;
 import org.junit.Test;
 
@@ -22,18 +20,31 @@ public class TestCreateNumberArray {
 	}
 	
 	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testValidDoubleArrayCreated() {
+	public void testEmptyArray() {
 		
-		double[] testArr = {9.9, 8.88, 7, 4.5};
+		double[] testArr = {};
 		
-		Number[] expected = {9.9, 8.88, 7, 4.5};
+		Number[] expected = {};
 		
 		Number[] actual = DataUtilities.createNumberArray(testArr);
 		
-		assertArrayEquals(expected, actual);
-		
+		assertArrayEquals("Testing using an empty array argument", expected, actual);
 		
 	}
+	
+	@Test (timeout = DEFAULT_TIMEOUT)
+	public void testValidDoubleArrayCreated() {
+		
+		double[] testArr = {9.9, 8.88, 7.9};
+		
+		Number[] expected = {9.9, 8.88, 7.9};
+		
+		Number[] actual = DataUtilities.createNumberArray(testArr);
+		
+		assertArrayEquals("Testing using a valid double array", expected, actual);
+			
+	}
+	
 	
 
 }

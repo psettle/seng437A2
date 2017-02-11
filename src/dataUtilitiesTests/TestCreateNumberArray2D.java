@@ -14,8 +14,21 @@ public class TestCreateNumberArray2D {
 	@Test (expected = InvalidParameterException.class)
 	public void testWithArgumentIsNull() {
 		
-		DataUtilities.createNumberArray(null);
+		DataUtilities.createNumberArray2D(null);
 		
+	}
+	
+	@Test (timeout = DEFAULT_TIMEOUT)
+	public void testValid2DDoubleArrayCreated() {
+		
+		double[][] testArr = {{9.9, 8.88, 7.9}, {5.5, 4.4, 8.0}, {3.3, 23.4, 33.5}};
+		
+		Number[][] expected = {{9.9, 8.88, 7.9}, {5.5, 4.4, 8.0}, {3.3, 23.4, 33.5}};
+		
+		Number[][] actual = DataUtilities.createNumberArray2D(testArr);
+		
+		assertArrayEquals(expected, actual);
+			
 	}
 
 }
