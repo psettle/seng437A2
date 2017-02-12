@@ -2,11 +2,13 @@ package dataUtilitiesTests;
 
 import static org.junit.Assert.*;
 
-import java.awt.List;
-import java.util.Arrays;
+import java.security.InvalidParameterException;
 
 import org.jfree.data.DataUtilities;
 import org.jfree.data.KeyedValues;
+import java.awt.List;
+import java.util.Arrays;
+
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Before;
@@ -19,10 +21,13 @@ public class TestGetCumulativePercentages {
 	
 	private static final int DEFAULT_TIMEOUT = 2000;
 	
+	
 	@Before
 	public void setup() {
+		
 		mockingContext = new Mockery();
 		values = mockingContext.mock(KeyedValues.class);
+		
 	}
 	
 	/**

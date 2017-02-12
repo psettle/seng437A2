@@ -5,11 +5,13 @@ import static org.junit.Assert.*;
 import java.security.InvalidParameterException;
 
 import org.jfree.data.DataUtilities;
+import org.jmock.Mockery;
 import org.junit.Test;
 
 public class TestCreateNumberArray2D {
 
 	private static final int DEFAULT_TIMEOUT = 2000;
+	
 	
 	@Test (expected = InvalidParameterException.class)
 	public void testWithArgumentIsNull() {
@@ -17,6 +19,20 @@ public class TestCreateNumberArray2D {
 		DataUtilities.createNumberArray2D(null);
 		
 	}
+	
+	@Test (timeout = DEFAULT_TIMEOUT)
+	public void testEmptyArray() {
+		
+		double[][] testArr = {{}};
+		
+		Number[][] expected = {{}};
+		
+		Number[][] actual = DataUtilities.createNumberArray2D(testArr);
+		
+		assertArrayEquals("Testing using an empty array argument", expected, actual);
+		
+	}
+
 	
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testValid2DDoubleArrayCreated() {
