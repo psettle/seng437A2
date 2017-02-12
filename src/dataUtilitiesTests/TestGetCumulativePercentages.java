@@ -25,14 +25,19 @@ public class TestGetCumulativePercentages {
 		values = mockingContext.mock(KeyedValues.class);
 	}
 	
+	/**
+	 * This test checks for throwing of InvalidParameterException given null input.
+	 */
 	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
-	public void test_Null_KeyedValuesDataInput() {
-		
+	public void test_Null_KeyedValues_exception() {
 		DataUtilities.getCumulativePercentages(null);
 	}
 	
+	/**
+	 * This test Checks for throwing of InvalidParameterException given empty input.
+	 */
 	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
-	public void test_Empty_KeyedValuesDataInput() {
+	public void test_Empty_KeyedValues_exception() {
 		
 		mockingContext.checking(new Expectations() {
 			{
@@ -45,8 +50,10 @@ public class TestGetCumulativePercentages {
 		
 		DataUtilities.getCumulativePercentages(this.values);
 	}
-	
-	//NOTE: THIS COULD BE BROKEN INTO CHECKING FOR SIZE, CHECKING VALUES, AND CHECKING KEYS.
+
+	/**
+	 * This test covers normal integer inputs for data.
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void test_Normal_IntegerValues_KeyedValues() {
 		
@@ -77,7 +84,57 @@ public class TestGetCumulativePercentages {
 		assertEquals("Testing result size with integer KeyedValues",
 				3, result.getItemCount());
 		
-		assertEquals("Testing returned keys with integer KeyedValues", Arrays.asList(0,1,2),
+		assertEquals("Testing cumulative percentages with integer KeyedValues",
+						Arrays.asList((1.0/6), (3.0/6), (6.0/6)), 
+								Arrays.asList(
+								result.getValue(result.getKey(0)),
+								result.getValue(result.getKey(1)),
+								result.getValue(result.getKey(2)) ));
+
+	}
+	
+	/**
+	 * This test covers negative numbers being used as keys, and positive integers
+	 * being used for values.
+	 */
+	@Test(timeout=DEFAULT_TIMEOUT)
+	public void test_NegativeKeys_IntegerValues_KeyedValues() {
+		//ASSUME it's acceptable for the keys in KeyedValues to be negative numbers.
+		mockingContext.checking(new Expectations() {
+			{
+			atLeast(0).of(values).getKeys();
+			will(returnValue(Arrays.asList(-3,-2,-1) ));
+			atLeast(1).of(values).getItemCount();
+			will(returnValue(3));
+			
+			atLeast(1).of(values).getValue(-3);
+			will(returnValue(1));
+			atLeast(1).of(values).getValue(-2);
+			will(returnValue(2));
+			atLeast(1).of(values).getValue(-1);
+			will(returnValue(3));
+			
+			atLeast(0).of(values).getValue(0);
+			will(returnValue(null));
+			atLeast(0).of(values).getValue(1);
+			will(returnValue(null));
+			atLeast(0).of(values).getValue(2);
+			will(returnValue(null));
+			
+			atLeast(0).of(values).getKey(0);
+			will(returnValue(-3));
+			atLeast(0).of(values).getKey(1);
+			will(returnValue(-2));
+			atLeast(0).of(values).getKey(2);
+			will(returnValue(-1));
+			}
+		});
+		
+		KeyedValues result = DataUtilities.getCumulativePercentages(this.values);
+		assertEquals("Testing result size with integer KeyedValues",
+				3, result.getItemCount());
+		
+		assertEquals("Testing returned keys with negative integer keys in KeyedValues", Arrays.asList(-3,-2,-1),
 				result.getKeys());
 		
 		assertEquals("Testing cumulative percentages with integer KeyedValues",
@@ -88,58 +145,10 @@ public class TestGetCumulativePercentages {
 								result.getValue(result.getKey(2)) ));
 
 	}
-	
-	//NOTE: THIS COULD BE BROKEN INTO CHECKING FOR SIZE, CHECKING VALUES, AND CHECKING KEYS.
-		@Test(timeout=DEFAULT_TIMEOUT)
-		public void test_NegativeKeys_IntegerValues_KeyedValues() {
-			//ASSUME it's acceptable for the keys in KeyedValues to be negative numbers.
-			mockingContext.checking(new Expectations() {
-				{
-				atLeast(0).of(values).getKeys();
-				will(returnValue(Arrays.asList(-3,-2,-1) ));
-				atLeast(1).of(values).getItemCount();
-				will(returnValue(3));
-				
-				atLeast(1).of(values).getValue(-3);
-				will(returnValue(1));
-				atLeast(1).of(values).getValue(-2);
-				will(returnValue(2));
-				atLeast(1).of(values).getValue(-1);
-				will(returnValue(3));
-				
-				atLeast(0).of(values).getValue(0);
-				will(returnValue(null));
-				atLeast(0).of(values).getValue(1);
-				will(returnValue(null));
-				atLeast(0).of(values).getValue(2);
-				will(returnValue(null));
-				
-				atLeast(0).of(values).getKey(0);
-				will(returnValue(-3));
-				atLeast(0).of(values).getKey(1);
-				will(returnValue(-2));
-				atLeast(0).of(values).getKey(2);
-				will(returnValue(-1));
-				}
-			});
-			
-			KeyedValues result = DataUtilities.getCumulativePercentages(this.values);
-			assertEquals("Testing result size with integer KeyedValues",
-					3, result.getItemCount());
-			
-			assertEquals("Testing returned keys with integer KeyedValues", Arrays.asList(-3,-2,-1),
-					result.getKeys());
-			
-			assertEquals("Testing cumulative percentages with integer KeyedValues",
-							Arrays.asList((1.0/6), (3.0/6), (6.0/6)), 
-									Arrays.asList(
-									result.getValue(result.getKey(0)),
-									result.getValue(result.getKey(1)),
-									result.getValue(result.getKey(2)) ));
-
-		}
-	
-	//NOTE: THIS COULD BE BROKEN INTO CHECKING FOR SIZE, CHECKING VALUES, AND CHECKING KEYS.
+	/**
+	 * This test covers the use of floating-point numbers as values in data,
+	 * and positive integers being used as keys.
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void test_Normal_FloatValues_KeyedValues() {
 		
@@ -167,21 +176,22 @@ public class TestGetCumulativePercentages {
 		});
 		
 		KeyedValues result = DataUtilities.getCumulativePercentages(this.values);
-		assertEquals("Testing result size with integer KeyedValues",
+		assertEquals("Testing result size with floating-point KeyedValues",
 				3, result.getItemCount());
 		
-		assertEquals("Testing returned keys with integer KeyedValues", Arrays.asList(0,1,2),
-				result.getKeys());
-		
-		assertEquals("Testing cumulative percentages with integer KeyedValues",
+		assertEquals("Testing cumulative percentages with floating-point KeyedValues",
 						Arrays.asList((1.1/6.6), (3.3/6.6), (6.6/6.6)), 
-								Arrays.asList(
-								result.getValue(result.getKey(0)),
-								result.getValue(result.getKey(1)),
-								result.getValue(result.getKey(2)) ));
+							Arrays.asList(
+							result.getValue(result.getKey(0)),
+							result.getValue(result.getKey(1)),
+							result.getValue(result.getKey(2)) ));
 
 	}
-	//NOTE: THIS COULD BE BROKEN INTO CHECKING FOR SIZE, CHECKING VALUES, AND CHECKING KEYS.
+
+	/**
+	 * This test covers positive integers used as keys and data, but
+	 * the values of indices do not match the values of keys.
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void test_IntegerValues_KeyedValues_KeysDoNotMatchIndices() {
 		
@@ -234,39 +244,40 @@ public class TestGetCumulativePercentages {
 
 	}
 	
+	/**
+	 * This test Checks for throwing of InvalidParameterException given negative values
+	 * in the data input.
+	 */
 	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
 	public void test_NegativeValue_KeyedValues_exception() {
 		
 		mockingContext.checking(new Expectations() {
 			{
 			atLeast(0).of(values).getKeys();
-			will(returnValue(Arrays.asList(0,1,2) ));
+			will(returnValue(Arrays.asList(0,1) ));
 			atLeast(1).of(values).getItemCount();
-			will(returnValue(3));
+			will(returnValue(2));
 			
 			atLeast(0).of(values).getValue(0);
 			will(returnValue(-1));
 			atLeast(0).of(values).getValue(1);
-			will(returnValue(1));
-			atLeast(0).of(values).getValue(2);
-			will(returnValue(2));
+			will(returnValue(-1));
 			
 			atLeast(0).of(values).getKey(0);
 			will(returnValue(0));
 			atLeast(0).of(values).getKey(1);
 			will(returnValue(1));
-			atLeast(0).of(values).getKey(2);
-			will(returnValue(2));
 			}
 		});
 
-		// delete this comment:
-		// ASSUME: This test should throw an exception, but it doesn't. It tries to compute
-		// the cumulative percentage anyway, which would result in a percentage value outside of 0.0 and 1.0
 		DataUtilities.getCumulativePercentages(this.values);
 
 	}
 	
+	/**
+	 * This test Checks for throwing of InvalidParameterException given zeros as values
+	 * in the data input.
+	 */
 	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
 	public void test_ZeroValue_KeyedValues_exception() {
 		
@@ -290,28 +301,65 @@ public class TestGetCumulativePercentages {
 		});
 
 		DataUtilities.getCumulativePercentages(this.values);
-		
-		// delete these comments:
-		
-		// ASSUME: This test should throw an exception, but it doesn't. It tries to compute
-		// the cumulative percentage anyway, which would result in a percentage value outside of 0.0 and 1.0 (NaN)
-		
-		/* v v THIS ACTUALLY ALL PASSES v v.
 
-		KeyedValues result = DataUtilities.getCumulativePercentages(this.values);
-		assertEquals("Testing result size with integer KeyedValues",
-				2, result.getItemCount());
+	}
+	
+	/**
+	 * This test Checks for throwing of InvalidParameterException given null values
+	 * in the data input.
+	 */
+	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
+	public void test_nullValue_KeyedValues_exception() {
 		
-		assertEquals("Testing returned keys with integer KeyedValues", Arrays.asList(0,1),
-				result.getKeys());
+		mockingContext.checking(new Expectations() {
+			{
+			atLeast(0).of(values).getKeys();
+			will(returnValue(Arrays.asList(0,1) ));
+			atLeast(1).of(values).getItemCount();
+			will(returnValue(2));
+			
+			atLeast(0).of(values).getValue(0);
+			will(returnValue(null));
+			atLeast(0).of(values).getValue(1);
+			will(returnValue(null));
+			
+			atLeast(0).of(values).getKey(0);
+			will(returnValue(0));
+			atLeast(0).of(values).getKey(1);
+			will(returnValue(1));
+			}
+		});
+
+		DataUtilities.getCumulativePercentages(this.values);
+
+	}
+	/**
+	 * This test Checks for throwing of InvalidParameterException given NaN values
+	 * in the data input.
+	 */
+	@Test(expected=java.security.InvalidParameterException.class, timeout=DEFAULT_TIMEOUT)
+	public void test_NaNValue_KeyedValues_exception() {
 		
-		assertEquals("Testing cumulative percentages with integer KeyedValues",
-						Arrays.asList((0.0/0.0), (0.0/0.0)), 
-								Arrays.asList(
-								result.getValue(result.getKey(0)),
-								result.getValue(result.getKey(1)) ));
-								*/
-		
+		mockingContext.checking(new Expectations() {
+			{
+			atLeast(0).of(values).getKeys();
+			will(returnValue(Arrays.asList(0,1) ));
+			atLeast(1).of(values).getItemCount();
+			will(returnValue(2));
+			
+			atLeast(0).of(values).getValue(0);
+			will(returnValue(Double.NaN));
+			atLeast(0).of(values).getValue(1);
+			will(returnValue(Double.NaN));
+			
+			atLeast(0).of(values).getKey(0);
+			will(returnValue(0));
+			atLeast(0).of(values).getKey(1);
+			will(returnValue(1));
+			}
+		});
+
+		DataUtilities.getCumulativePercentages(this.values);
 
 	}
 }
