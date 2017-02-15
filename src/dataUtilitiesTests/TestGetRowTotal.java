@@ -27,6 +27,9 @@ public class TestGetRowTotal {
 		
 	}
 	
+	/**
+	 * Tests summing a row index that is out of range in the positive direction
+	 */
 	@Test(expected=IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
 	public void testRowTooLarge() {
 		
@@ -42,6 +45,9 @@ public class TestGetRowTotal {
 		DataUtilities.calculateColumnTotal(this.values, 3);
 	}
 	
+	/**
+	 * Tests summing a row index that is out of range in the negative direction
+	 */
 	@Test(expected = IndexOutOfBoundsException.class, timeout=DEFAULT_TIMEOUT)
 	public void testRowTooSmall() {
 		
@@ -57,6 +63,9 @@ public class TestGetRowTotal {
 		DataUtilities.calculateColumnTotal(this.values, -1);
 	}
 	
+	/**
+	 * Tests summing a row that contains int values
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithInts() {
 		
@@ -80,6 +89,10 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with a row on integers", 16, result, 0.0000001d);
 	}
 	
+	/**
+	 * 
+	 * Tests summing a row with double values
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithDoubles() {
 		
@@ -101,6 +114,9 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with row of doubles", 12.583, result, 0.0000001d);
 	}
 	
+	/**
+	 * Tests summing an empty row
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithNoColumns() {
 		
@@ -116,6 +132,9 @@ public class TestGetRowTotal {
 		assertEquals("Testing row total with no columns", 0, result, 0.0000001d);
 	}
 	
+	/**
+	 * Tests that trying to sum an invalid Values2D object throws an error
+	 */
 	@Test (expected = InvalidParameterException.class,timeout=DEFAULT_TIMEOUT)
 	public void testRowTotalWithNullArgument() {
 		
