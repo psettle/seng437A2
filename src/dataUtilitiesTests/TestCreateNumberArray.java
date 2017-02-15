@@ -11,7 +11,10 @@ public class TestCreateNumberArray {
 
 	private static final int DEFAULT_TIMEOUT = 2000;
 
-	
+	/**
+	 * This test checks for the proper exception being thrown when an invalid parameter is inputed
+	 * 
+	 */
 	@Test (expected = InvalidParameterException.class, timeout = DEFAULT_TIMEOUT)
 	public void testWithArgumentIsNull() {
 		
@@ -19,6 +22,10 @@ public class TestCreateNumberArray {
 		
 	}
 	
+	
+	/**
+	 * This test checks for expected behavior when inputing an empty array into the function
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testEmptyArray() {
 		
@@ -32,18 +39,24 @@ public class TestCreateNumberArray {
 		
 	}
 	
+	/**
+	 * This test checks for a correctly outputed Number when a valid double array is inputed.
+	 * Note: all of the numbers have been properly formatted as doubles an not implicit doubles,
+	 * as would be the expected input. That is instead of inputting 4, 4.0 is inputed.
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testValidDoubleArrayCreated() {
 		
-		double[] testArr = {9.9, 8.88, 7.9};
+		double[] testArr = {9.9, 4.0, -8.88, 7.9};
 		
-		Number[] expected = {9.9, 8.88, 7.9};
+		Number[] expected = {9.9, 4.0, -8.88, 7.9};
 		
 		Number[] actual = DataUtilities.createNumberArray(testArr);
 		
 		assertArrayEquals("Testing using a valid double array", expected, actual);
 			
 	}
+	
 	
 	
 

@@ -9,7 +9,10 @@ public class TestGetUpperBound {
 
 	private static final int DEFAULT_TIMEOUT = 2000;
 	
-	
+	/**
+	 * This test checks for the proper return from getUpperBound when the graph extends to negative
+	 * infinity
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testLowerBoundNegativeInfinity() {
 		
@@ -19,6 +22,10 @@ public class TestGetUpperBound {
 		
 	}
 	
+	/**
+	 * This test checks for the proper return from getUpperBound when the graph extends to positive
+	 * infinity
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testUpperBoundPositiveInfinity() {
 		
@@ -28,7 +35,9 @@ public class TestGetUpperBound {
 		
 	}
 	
-	
+	/**
+	 * This test tests for the proper return from getUpperBound when the graph has a finite range
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testValidRangeNeitherInfinity() {
 		
@@ -38,6 +47,10 @@ public class TestGetUpperBound {
 		
 	}
 	
+	/**
+	 * This test checks for the proper return from getUpperBound when the range is of zero length
+	 * i.e. upper == lower
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testLowerEqualsUpper() {
 		

@@ -10,6 +10,10 @@ public class TestGetLowerBound {
 	
 	private static final int DEFAULT_TIMEOUT = 2000;
 	
+	/**
+	 * This test checks to see if getLowerBound correctly returns with a graph that extends to 
+	 * negative infinity
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testLowerBoundNegativeInfinity() {
 		
@@ -19,6 +23,10 @@ public class TestGetLowerBound {
 		
 	}
 	
+	/**
+	 * This test checks to see if getLowerBound correctly returns with a graph that extends to 
+	 * positive infinity
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testUpperBoundPositiveInfinity() {
 		
@@ -28,7 +36,9 @@ public class TestGetLowerBound {
 		
 	}
 	
-	
+	/**
+	 * This test checks that getLowerBound correctly returns with a finite, valid range
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testValidRangeNeitherInfinity() {
 		
@@ -38,6 +48,10 @@ public class TestGetLowerBound {
 		
 	}
 	
+	/**
+	 * This test checks to see if getLowerBound correctly returns with a finite range of zero length
+	 * i.e. upper == lower
+	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
 	public void testLowerEqualsUpper() {
 		

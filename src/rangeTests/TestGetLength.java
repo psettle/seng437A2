@@ -9,6 +9,9 @@ public class TestGetLength {
 
 	private static final int DEFAULT_TIMEOUT = 2000;
 	
+	/**
+	 * This test checks getLength for proper return from a valid, finite range
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testValidLowerLessThanUpper() {
 		
@@ -18,6 +21,10 @@ public class TestGetLength {
 		
 	}
 	
+	/**
+	 * This test checks getLength for proper return from a valid, finite range of length zero
+	 * i.e. upper == lower
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testValidLowerEqualsUpper() {
 		
@@ -27,6 +34,9 @@ public class TestGetLength {
 		
 	}
 	
+	/**
+	 * This test checks for the return of NaN when one of the bounds is NaN
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testUpperBoundNotANumber() {
 		
@@ -36,6 +46,10 @@ public class TestGetLength {
 		
 	}
 	
+	/**
+	 * This test checks for the proper return from getLength when the range extends to 
+	 * negative infinity
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testLowerBoundNegativeInfinity() {
 		
@@ -45,6 +59,10 @@ public class TestGetLength {
 		
 	}
 	
+	/**
+	 * This test checks for the proper return from getLength when the range extends to 
+	 * positive infinity
+	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
 	public void testUpperBoundPositiveInfinity() {
 		
