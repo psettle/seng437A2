@@ -46,9 +46,9 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(new List() ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(0));
 			}
 		});
@@ -64,9 +64,9 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(0,1,2) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(3));
 			
 			atLeast(1).of(values).getValue(0);
@@ -76,11 +76,11 @@ public class TestGetCumulativePercentages {
 			atLeast(1).of(values).getValue(2);
 			will(returnValue(3));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(1));
-			atLeast(0).of(values).getKey(2);
+			allowing(values).getKey(2);
 			will(returnValue(2));
 			}
 		});
@@ -107,9 +107,9 @@ public class TestGetCumulativePercentages {
 		//ASSUME it's acceptable for the keys in KeyedValues to be negative numbers.
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(-3,-2,-1) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(3));
 			
 			atLeast(1).of(values).getValue(-3);
@@ -119,18 +119,18 @@ public class TestGetCumulativePercentages {
 			atLeast(1).of(values).getValue(-1);
 			will(returnValue(3));
 			
-			atLeast(0).of(values).getValue(0);
+			allowing(values).getValue(0);
 			will(returnValue(null));
-			atLeast(0).of(values).getValue(1);
+			allowing(values).getValue(1);
 			will(returnValue(null));
-			atLeast(0).of(values).getValue(2);
+			allowing(values).getValue(2);
 			will(returnValue(null));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(-3));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(-2));
-			atLeast(0).of(values).getKey(2);
+			allowing(values).getKey(2);
 			will(returnValue(-1));
 			}
 		});
@@ -159,9 +159,9 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(0,1,2) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(3));
 			
 			atLeast(1).of(values).getValue(0);
@@ -171,11 +171,11 @@ public class TestGetCumulativePercentages {
 			atLeast(1).of(values).getValue(2);
 			will(returnValue(3.3));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(1));
-			atLeast(0).of(values).getKey(2);
+			allowing(values).getKey(2);
 			will(returnValue(2));
 			}
 		});
@@ -202,18 +202,18 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(4,5,6) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(3));
 			
-			atLeast(0).of(values).getValue(0);
+			allowing(values).getValue(0);
 			will(returnValue(null));
-			atLeast(0).of(values).getValue(1);
+			allowing(values).getValue(1);
 			will(returnValue(null));
-			atLeast(0).of(values).getValue(2);
+			allowing(values).getValue(2);
 			will(returnValue(null));
-			atLeast(0).of(values).getValue(3);
+			allowing(values).getValue(3);
 			will(returnValue(null));
 			
 			atLeast(1).of(values).getValue(4);
@@ -223,11 +223,11 @@ public class TestGetCumulativePercentages {
 			atLeast(1).of(values).getValue(6);
 			will(returnValue(6));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(4));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(5));
-			atLeast(0).of(values).getKey(2);
+			allowing(values).getKey(2);
 			will(returnValue(6));
 			}
 		});
@@ -258,19 +258,19 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(0,1) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(2));
 			
-			atLeast(0).of(values).getValue(0);
+			allowing(values).getValue(0);
 			will(returnValue(-1));
-			atLeast(0).of(values).getValue(1);
+			allowing(values).getValue(1);
 			will(returnValue(-1));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(1));
 			}
 		});
@@ -288,19 +288,19 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(0,1) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(2));
 			
-			atLeast(0).of(values).getValue(0);
+			allowing(values).getValue(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getValue(1);
+			allowing(values).getValue(1);
 			will(returnValue(0));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(1));
 			}
 		});
@@ -318,19 +318,19 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(0,1) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(2));
 			
-			atLeast(0).of(values).getValue(0);
+			allowing(values).getValue(0);
 			will(returnValue(null));
-			atLeast(0).of(values).getValue(1);
+			allowing(values).getValue(1);
 			will(returnValue(null));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(1));
 			}
 		});
@@ -347,19 +347,19 @@ public class TestGetCumulativePercentages {
 		
 		mockingContext.checking(new Expectations() {
 			{
-			atLeast(0).of(values).getKeys();
+			allowing(values).getKeys();
 			will(returnValue(Arrays.asList(0,1) ));
-			atLeast(1).of(values).getItemCount();
+			allowing(values).getItemCount();
 			will(returnValue(2));
 			
-			atLeast(0).of(values).getValue(0);
+			allowing(values).getValue(0);
 			will(returnValue(Double.NaN));
-			atLeast(0).of(values).getValue(1);
+			allowing(values).getValue(1);
 			will(returnValue(Double.NaN));
 			
-			atLeast(0).of(values).getKey(0);
+			allowing(values).getKey(0);
 			will(returnValue(0));
-			atLeast(0).of(values).getKey(1);
+			allowing(values).getKey(1);
 			will(returnValue(1));
 			}
 		});
