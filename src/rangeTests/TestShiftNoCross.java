@@ -26,15 +26,6 @@ public class TestShiftNoCross {
 		
 	}
 	
-	
-	/**
-	 * This tests that attempting to shift a null reference will thrw an exception
-	 */
-	@Test(timeout=DEFAULT_TIMEOUT, expected=InvalidParameterException.class)
-	public void testNullShift() {
-		Range.shift(null, 0);
-	}
-	
 	/**
 	 * This tests shifting a range that is below zero towards neg_inf
 	 */
@@ -150,5 +141,13 @@ public class TestShiftNoCross {
 	public void testRangeNoShift() {
 		this.spanningSetup();
 		assertEquals("Testing no shift of spanning range", new Range(-2, 2), Range.shift(this.range, 0));
+	}
+	
+	/**
+	 * This tests that attempting to shift a null reference will thrw an exception
+	 */
+	@Test(timeout=DEFAULT_TIMEOUT, expected=InvalidParameterException.class)
+	public void testNullShift() {
+		Range.shift(null, 0);
 	}
 }
