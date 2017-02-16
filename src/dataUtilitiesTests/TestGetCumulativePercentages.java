@@ -2,8 +2,6 @@ package dataUtilitiesTests;
 
 import static org.junit.Assert.*;
 
-import java.security.InvalidParameterException;
-
 import org.jfree.data.DataUtilities;
 import org.jfree.data.KeyedValues;
 import java.awt.List;
