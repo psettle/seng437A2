@@ -38,7 +38,7 @@ public class TestGetLength {
 	 * This test checks for the return of NaN when one of the bounds is NaN
 	 */
 	@Test(timeout=DEFAULT_TIMEOUT)
-	public void testUpperBoundNotANumber() {
+	public void testBoundNotANumber() {
 		
 		Range r = new Range(-2.0, Double.NaN);
 		

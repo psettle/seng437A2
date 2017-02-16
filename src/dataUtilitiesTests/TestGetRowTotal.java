@@ -47,10 +47,12 @@ public class TestGetRowTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-				atLeast(0).of(values).getRowCount();
-				will(returnValue(0));
-				atLeast(0).of(values).getColumnCount();
-				will(returnValue(0));
+				one(values).getRowCount();
+				will(returnValue(1));
+				one(values).getColumnCount();
+				will(returnValue(3));
+//				one(values).getValue(0, -1);
+//				will(throwException(new IndexOutOfBoundsException()));
 			}
 		});
 		
