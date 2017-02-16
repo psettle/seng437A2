@@ -16,7 +16,7 @@ public class TestCreateNumberArray {
 	 * 
 	 */
 	@Test (expected = InvalidParameterException.class, timeout = DEFAULT_TIMEOUT)
-	public void testWithArgumentIsNull() {
+	public void test_Double_Array_Is_Null() {
 		
 		DataUtilities.createNumberArray(null);
 		
@@ -27,7 +27,7 @@ public class TestCreateNumberArray {
 	 * This test checks for expected behavior when inputing an empty array into the function
 	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testEmptyArray() {
+	public void test_Empty_Array() {
 		
 		double[] testArr = {};
 		
@@ -45,11 +45,11 @@ public class TestCreateNumberArray {
 	 * as would be the expected input. That is instead of inputting 4, 4.0 is inputed.
 	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testValidDoubleArrayCreated() {
+	public void test_Valid_Double_Array_Created() {
 		
-		double[] testArr = {9.9, 4.0, -8.88, 7.9};
+		double[] testArr = {0.00000005, 4.0, -8.88, 7.9};
 		
-		Number[] expected = {9.9, 4.0, -8.88, 7.9};
+		Number[] expected = {0.00000005, 4.0, -8.88, 7.9};
 		
 		Number[] actual = DataUtilities.createNumberArray(testArr);
 		
@@ -57,7 +57,4 @@ public class TestCreateNumberArray {
 			
 	}
 	
-	
-	
-
 }

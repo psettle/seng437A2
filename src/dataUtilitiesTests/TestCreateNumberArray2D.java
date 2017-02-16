@@ -16,7 +16,7 @@ public class TestCreateNumberArray2D {
 	 * inputed.
 	 */
 	@Test (expected = InvalidParameterException.class)
-	public void testWithArgumentIsNull() {
+	public void test_Double_Array_Is_Null() {
 		
 		DataUtilities.createNumberArray2D(null);
 		
@@ -27,12 +27,11 @@ public class TestCreateNumberArray2D {
 	 * This test checks for the proper exception being thrown when a row in the matrix is null
 	 */
 	@Test (expected = InvalidParameterException.class, timeout = DEFAULT_TIMEOUT)
-	public void testWith1DArgumentNull() {
+	public void test_With_Row_Argument_Null() {
 		
-		double[][] testArr = {null};
+		double[][] testArr = {{7.7}, {88.66, 444.4, 6.6}, null, {-44.3, 0.00002}};
 		
-		@SuppressWarnings("unused")
-		Number[][] actual = DataUtilities.createNumberArray2D(testArr);
+		DataUtilities.createNumberArray2D(testArr);
 			
 	}
 	
@@ -40,7 +39,7 @@ public class TestCreateNumberArray2D {
 	 * This test checks for the proper output when an empty 2D array is inputed
 	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testEmptyArray() {
+	public void test_Empty_Array() {
 		
 		double[][] testArr = {{}};
 		
@@ -59,11 +58,11 @@ public class TestCreateNumberArray2D {
 	 * as would be the expected input. That is instead of inputting 8, 8.0 is inputed.
 	 */
 	@Test (timeout = DEFAULT_TIMEOUT)
-	public void testValid2DDoubleArrayCreated() {
+	public void test_Valid_2D_Number_Array_Created() {
 		
-		double[][] testArr = {{-9.9, 8.88, 7.9}, {-5.5, -4.4, 8.0}, {3.3, 23.4, -33.5}};
+		double[][] testArr = {{-9.9, 0.000077, 4.454, 99.0330, 13.234}, {-5.5, -4.4, 8.0}, {3.3, -33.5}};
 		
-		Number[][] expected = {{-9.9, 8.88, 7.9}, {-5.5, -4.4, 8.0}, {3.3, 23.4, -33.5}};
+		Number[][] expected = {{-9.9, 0.000077, 4.454, 99.0330, 13.234}, {-5.5, -4.4, 8.0}, {3.3, -33.5}};
 		
 		Number[][] actual = DataUtilities.createNumberArray2D(testArr);
 		
