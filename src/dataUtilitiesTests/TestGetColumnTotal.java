@@ -35,7 +35,7 @@ public class TestGetColumnTotal {
 			{
 				atLeast(0).of(values).getRowCount();
 				will(returnValue(0));
-				atLeast(0).of(values).getColumnCount();
+				oneOf(values).getColumnCount();
 				will(returnValue(0));
 			}
 		});
@@ -53,7 +53,7 @@ public class TestGetColumnTotal {
 			{
 				atLeast(0).of(values).getRowCount();
 				will(returnValue(0));
-				atLeast(0).of(values).getColumnCount();
+				oneOf(values).getColumnCount();
 				will(returnValue(0));
 			}
 		});
