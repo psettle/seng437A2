@@ -1,9 +1,6 @@
 package rangeTests;
 
 import org.junit.runner.RunWith;
-import rangeTests.testShiftNoCross.TestShiftRangeBelowZero;
-import rangeTests.testShiftNoCross.TestShiftRangePastZero;
-import rangeTests.testShiftNoCross.TestShiftRangeSpansZero;
 
 import org.junit.runners.Suite;
 
@@ -13,9 +10,7 @@ import org.junit.runners.Suite;
 	TestGetLength.class,
 	TestGetLowerBound.class,
 	TestGetUpperBound.class,
-	TestShiftRangeBelowZero.class,
-	TestShiftRangePastZero.class,
-	TestShiftRangeSpansZero.class
+	TestShiftNoCross.class
 })
 
 

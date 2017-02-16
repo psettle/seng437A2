@@ -35,7 +35,7 @@ public class TestGetRowTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-				atLeast(0).of(values).getRowCount();
+				oneOf(values).getRowCount();
 				will(returnValue(0));
 				atLeast(0).of(values).getColumnCount();
 				will(returnValue(0));
@@ -53,7 +53,7 @@ public class TestGetRowTotal {
 		
 		mockingContext.checking(new Expectations() {
 			{
-				atLeast(0).of(values).getRowCount();
+				oneOf(values).getRowCount();
 				will(returnValue(0));
 				atLeast(0).of(values).getColumnCount();
 				will(returnValue(0));
