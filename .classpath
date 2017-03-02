@@ -2,11 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="JFreeChart/jfreechart.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SENG437A2/ModifiedJavadoc/index.html!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="JFreeChart/lib/bsh-core-2.0b4.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/cglib-2.1_3-src.jar"/>
 	<classpathentry kind="lib" path="JFreeChart/lib/cglib-nodep-2.1_3.jar"/>
