@@ -139,6 +139,29 @@ public class TestGetColumnTotal {
 		
 	}
 	
+	/**
+	 * Tests that a null value in the data array causes the invalid input exception
+	 */
+	@Test (timeout=DEFAULT_TIMEOUT, expected =  InvalidParameterException.class)
+	public void testColumnTotalWithNullValues() {
+		
+		mockingContext.checking(new Expectations() {
+			{
+				one(values).getRowCount();
+				will(returnValue(3));
+				one(values).getValue(0, 1);
+				will(returnValue(null));
+				one(values).getValue(1, 1);
+				will(returnValue(1));
+				one(values).getValue(2, 1);
+				will(returnValue(2));
+			}
+		});
+
+		
+		DataUtilities.calculateColumnTotal(values, 1);
+	}
+	
 	
 	
 	

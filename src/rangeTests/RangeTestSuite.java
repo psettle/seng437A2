@@ -10,7 +10,8 @@ import org.junit.runners.Suite;
 	TestGetLength.class,
 	TestGetLowerBound.class,
 	TestGetUpperBound.class,
-	TestShiftNoCross.class
+	TestShiftNoCross.class,
+	TestCombine.class
 })
 
 
